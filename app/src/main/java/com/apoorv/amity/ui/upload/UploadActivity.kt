@@ -1,4 +1,6 @@
-package com.apoorv.amity.Utils
+package com.apoorv.amity.ui.upload
+
+import com.apoorv.amity.ui.common.BaseActivity
 
 /**
  * Created by Apoorv Vardhman on 8/13/2021
@@ -10,11 +12,6 @@ package com.apoorv.amity.Utils
  * @Github : https://github.com/Apoorv-Vardhman
  * Contact :  +91 8434014444
  */
-class Constants {
-    companion object{
-        val BASE_URL = "https://feminaamoremio.com/"
-        val AUTH_TOKEN = "AUTH_TOKEN"
-        val USER_MOBILE = "USER_MOBILE"
-        val USER_NAME = "USER_NAME"
-    }
+class UploadActivity : BaseActivity() {
+
 }
