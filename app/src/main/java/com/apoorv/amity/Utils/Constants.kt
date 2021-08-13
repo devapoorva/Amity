@@ -16,5 +16,11 @@ class Constants {
         val AUTH_TOKEN = "AUTH_TOKEN"
         val USER_MOBILE = "USER_MOBILE"
         val USER_NAME = "USER_NAME"
+
+        val CLIENT_SECRET = "rxNXXGhReuwXFEn3QetyPgFhhwSAX7lEClUQdVgV"
+        val GRANT_TYPE = "grant_type"
+        val SCOPE = "*"
+        val CLIENT_ID = 2
+
     }
 }
