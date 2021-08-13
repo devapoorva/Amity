@@ -1,5 +1,6 @@
 package com.apoorv.amity.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
@@ -10,8 +11,11 @@ import com.apoorv.amity.R
 import com.apoorv.amity.Utils.Constants
 import com.apoorv.amity.data.AppSession
 import com.apoorv.amity.databinding.ActivityLoginBinding
+import com.apoorv.amity.ui.admin.AdminActivity
 import com.apoorv.amity.ui.common.BaseActivity
 import com.apoorv.amity.ui.login.viewmodel.LoginViewModel
+import com.apoorv.amity.ui.register.RegisterActivity
+import com.apoorv.amity.ui.user.UserActivity
 import com.apoorv.amity.webservices.AuthResource
 import com.apoorv.amity.webservices.Resource
 
@@ -31,12 +35,11 @@ class LoginActivity :BaseActivity(){
     private lateinit var binding:ActivityLoginBinding
     private lateinit var viewModel:LoginViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-
+        setTitle("Login")
         binding.btnLogin.setOnClickListener { v->
             email = binding.edtEmail.text.toString()
             password = binding.edtPassword.text.toString()
@@ -51,6 +54,10 @@ class LoginActivity :BaseActivity(){
                 viewModel.login(params)
                 subscribe()
             }
+        }
+
+        binding.register.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
         }
     }
 
@@ -94,10 +101,28 @@ class LoginActivity :BaseActivity(){
                 }
                 AuthResource.Companion.Status.AUTHENTICATED->{
                     makeToast("Login Successful")
-                    
+                    AppSession.writeString(applicationContext,Constants.USER_NAME,response.data?.name)
+                    AppSession.writeString(applicationContext,Constants.USER_EMAIL,response.data?.email)
+                    var user_type:Int = response.data?.user_type ?: 1
+                    AppSession.writeInteger(applicationContext,Constants.USER_TYPE,user_type)
+                    startActivity(user_type)
+
                 }
             }
         })
+    }
+
+    fun startActivity(user_type:Int){
+        if(user_type==1){
+            var intent = Intent(applicationContext, UserActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+        else{
+            var intent = Intent(applicationContext, AdminActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
     }
 
     private var email:String = ""

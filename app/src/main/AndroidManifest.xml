@@ -25,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.login.LoginActivity"/>
+        <activity android:name=".ui.register.RegisterActivity"
+            android:parentActivityName=".ui.login.LoginActivity"/>
+        <activity android:name=".ui.user.UserActivity"/>
+        <activity android:name=".ui.admin.AdminActivity"/>
+        <activity android:name=".ui.upload.UploadActivity"
+            android:parentActivityName=".ui.admin.AdminActivity"/>
     </application>
 
 </manifest>

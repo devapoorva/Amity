@@ -7,23 +7,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="10dp"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/login_heading"
-            android:layout_marginTop="@dimen/_10dp"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:fontFamily="@font/roboto_bold"
-            android:id="@+id/tv_heading"
-            android:paddingStart="@dimen/_20dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10dp"
-            android:text="@string/email"
-            android:layout_below="@+id/tv_heading"
+            android:text="@string/title"
             android:textSize="@dimen/_20sp"
             android:layout_marginTop="@dimen/_30dp"
             android:fontFamily="@font/roboto_medium"
@@ -36,11 +25,11 @@
             android:background="@drawable/edt_login_back"
             android:layout_below="@id/tv_first"
             android:singleLine="true"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:paddingHorizontal="@dimen/_10dp"
             android:paddingVertical="@dimen/_15dp"
-            android:hint="@string/email"
-            android:id="@+id/edt_email"
+            android:hint="@string/title"
+            android:id="@+id/edt_title"
             android:layout_marginTop="@dimen/_10dp"
             android:paddingStart="@dimen/_20dp"/>
 
@@ -49,54 +38,78 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10dp"
-            android:text="@string/password"
-            android:layout_below="@+id/edt_email"
+            android:text="@string/question_type"
+            android:layout_below="@+id/edt_title"
             android:textSize="@dimen/_20sp"
             android:layout_marginTop="@dimen/_30dp"
             android:fontFamily="@font/roboto_medium"
-            android:id="@+id/tv_first2"
+            android:id="@+id/user_type"
             android:textColor="@color/black"/>
 
-
-
-        <EditText
+        <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edt_login_back"
-            android:layout_below="@id/tv_first2"
-            android:maxLength="10"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            android:paddingHorizontal="@dimen/_10dp"
-            android:paddingVertical="@dimen/_15dp"
-            android:hint="@string/password"
-            android:id="@+id/edt_password"
-            android:layout_marginTop="@dimen/_10dp"
-            android:paddingStart="@dimen/_20dp"/>
+            android:padding="@dimen/_15dp"
+            android:id="@+id/spn_type"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:layout_below="@+id/user_type"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_10dp"
-            android:text="@string/register_cap"
-            android:layout_below="@+id/edt_password"
+            android:text="@string/banner"
+            android:layout_below="@+id/spn_type"
             android:textSize="@dimen/_20sp"
-            android:textAlignment="textEnd"
             android:layout_marginTop="@dimen/_30dp"
             android:fontFamily="@font/roboto_medium"
-            android:id="@+id/register"
-            android:textColor="@color/teal_200"/>
+            android:id="@+id/banner"
+            android:textColor="@color/black"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="@string/upload_banner"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_primary"
+            android:id="@+id/btn_banner"
+            android:layout_below="@+id/banner"
+            android:layout_marginBottom="@dimen/_10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:text="@string/pdf"
+            android:layout_below="@+id/btn_banner"
+            android:textSize="@dimen/_20sp"
+            android:layout_marginTop="@dimen/_30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:id="@+id/pdf"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="@string/upload_banner"
+            android:textAllCaps="false"
+            android:background="@drawable/btn_primary"
+            android:id="@+id/btn_pdf"
+            android:layout_below="@+id/pdf"
+            android:layout_marginBottom="@dimen/_10dp"/>
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="@dimen/_10dp"
-            android:text="@string/login"
+            android:text="@string/upload"
             android:textAllCaps="false"
             android:background="@drawable/btn_primary"
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_upload"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/_10dp"/>
         <ProgressBar

@@ -8,4 +8,22 @@
     <string name="user_type">User Type</string>
     <string name="login_heading">Enter Email and password for verification</string>
     <string name="login">Login</string>
+    <string name="register_cap">Not a account? Register</string>
+    <string name="title">Title</string>
+    <string name="banner">Upload Banner</string>
+    <string name="upload_banner">Upload Banner</string>
+    <string name="pdf">Upload Pdf</string>
+    <string name="upload">Upload</string>
+    <string name="question_type">Question Type</string>
+    <string name="upload_question">Upload Question</string>
+    <string name="logout">Logout</string>
+    <string name="question">Question</string>
+    <string-array name="user_type">
+        <item>User</item>
+        <item>Admin</item>
+    </string-array>
+    <string-array name="question_type">
+        <item>New</item>
+        <item>Tranding</item>
+    </string-array>
 </resources>

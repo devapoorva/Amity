@@ -33,6 +33,7 @@ class RegisterViewModel : ViewModel() {
     fun register( params: HashMap<String, String>){
         val retrofitInstance = RetrofitInstance.getInstance()
         val api = retrofitInstance?.buildRetrofit(Api::class.java)
+        registerLiveData.postValue(Resource.loading(null))
         api?.register(params)?.enqueue(object :Callback<RegisterResponse>{
             override fun onResponse(
                 call: Call<RegisterResponse>,

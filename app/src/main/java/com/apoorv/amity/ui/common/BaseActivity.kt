@@ -1,12 +1,17 @@
 package com.apoorv.amity.ui.common
 
 
+import android.content.Intent
 import android.content.res.Configuration
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.apoorv.amity.R
+import com.apoorv.amity.data.AppSession
+import com.apoorv.amity.ui.login.LoginActivity
 
 
 /**
@@ -20,8 +25,13 @@ import androidx.appcompat.app.AppCompatDelegate
  * Contact :  +91 8434014444
  */
 open class BaseActivity : AppCompatActivity() {
-    fun makeToast(message:String){
-        Toast.makeText(applicationContext,message, Toast.LENGTH_SHORT).show()
+    fun makeToast(message: String){
+        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     fun changeTheme(){
@@ -35,11 +45,11 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun makeToast(message: Int){
-        Toast.makeText(applicationContext,message.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, message.toString(), Toast.LENGTH_SHORT).show()
     }
 
-    fun log(name:String,message: String){
-        Log.d(name,message)
+    fun log(name: String, message: String){
+        Log.d(name, message)
     }
 
     fun View.showOrGone(show: Boolean) {
@@ -48,5 +58,13 @@ open class BaseActivity : AppCompatActivity() {
         } else {
             View.GONE
         }
+    }
+
+    fun logout(){
+        makeToast("Logout Successful")
+        AppSession.clearAllPrefs(this)
+        var intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

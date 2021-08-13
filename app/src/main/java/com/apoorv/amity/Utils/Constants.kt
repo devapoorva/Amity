@@ -14,11 +14,12 @@ class Constants {
     companion object{
         val BASE_URL = "https://feminaamoremio.com/"
         val AUTH_TOKEN = "AUTH_TOKEN"
-        val USER_MOBILE = "USER_MOBILE"
+        val USER_EMAIL = "USER_MOBILE"
         val USER_NAME = "USER_NAME"
+        val USER_TYPE = "USER_TYPE"
 
         val CLIENT_SECRET = "rxNXXGhReuwXFEn3QetyPgFhhwSAX7lEClUQdVgV"
-        val GRANT_TYPE = "grant_type"
+        val GRANT_TYPE = "password"
         val SCOPE = "*"
         val CLIENT_ID = 2
 

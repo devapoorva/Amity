@@ -37,6 +37,7 @@ class LoginViewModel : ViewModel() {
         val retrofitInstance = RetrofitInstance.getInstance()
         val api = retrofitInstance?.buildRetrofit(Api::class.java)
         var call = api?.login(param)
+        loginLiveData.postValue(Resource.loading(null))
         if(call!=null){
             call.enqueue(object : Callback<LoginResponse>{
                 override fun onResponse(
@@ -45,7 +46,7 @@ class LoginViewModel : ViewModel() {
                 ) {
                     if(response.code()==200){
                         loginLiveData.postValue(Resource.success(response.body()))
-                    }else if(response.code()==401){
+                    }else if((response.code()>=400) and (response.code()<500)){
                         loginLiveData.postValue(Resource.error("Enter Valid Email or password",null))
                     }else{
                         loginLiveData.postValue(Resource.error("Something went wrong",null))

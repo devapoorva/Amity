@@ -13,9 +13,11 @@ import com.apoorv.amity.R
 import com.apoorv.amity.Utils.Constants
 import com.apoorv.amity.data.AppSession
 import com.apoorv.amity.databinding.ActivitySplashBinding
+import com.apoorv.amity.ui.admin.AdminActivity
 import com.apoorv.amity.ui.common.BaseActivity
 import com.apoorv.amity.ui.login.LoginActivity
 import com.apoorv.amity.ui.mian.MainActivity
+import com.apoorv.amity.ui.user.UserActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -110,9 +112,17 @@ class SplashActivity : BaseActivity() {
                     null
                 )
                 if (authToken != null) {
-                    var intent = Intent(applicationContext, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+                    var user_type:Int = AppSession.readInteger(applicationContext,Constants.USER_TYPE,1)
+                    if(user_type==1){
+                        var intent = Intent(applicationContext, UserActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
+                    else{
+                        var intent = Intent(applicationContext, AdminActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                    }
                 } else {
                     var intent = Intent(applicationContext, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

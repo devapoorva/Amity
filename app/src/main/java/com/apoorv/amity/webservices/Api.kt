@@ -3,12 +3,12 @@ package com.apoorv.amity.webservices
 import com.apoorv.amity.ui.login.model.LoginResponse
 import com.apoorv.amity.ui.register.model.RegisterResponse
 import com.apoorv.amity.ui.register.model.User
+import com.apoorv.amity.ui.upload.model.UploadResponse
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
-import java.util.HashMap
+import retrofit2.http.*
+import java.util.*
+
 
 /**
  * Created by Apoorv Vardhman on 8/13/2021
@@ -32,6 +32,14 @@ interface Api {
     @GET("api/v1/user")
     fun user(): Call<User>
 
+    @Multipart
+    @POST("api/v1/upload")
+    fun upload(
+        @Part("title") title: RequestBody,
+        @Part("pdf") pdf: RequestBody,
+        @Part("banner") banner: RequestBody,
+        @Part("type") type: RequestBody,
+    ): Call<UploadResponse>
 
 
 }
